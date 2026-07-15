@@ -214,3 +214,67 @@ SELECT
     ) AS average_delivery_days
 FROM orders
 WHERE order_delivered_customer_date IS NOT NULL;
+
+
+-- ============================================================
+-- SECTION 9: ADVANCED BUSINESS ANALYSIS
+-- ============================================================
+
+-- Query 21: Delivery Status vs Review Score
+-- Compare customer review scores for on-time and late deliveries.
+
+SELECT
+    CASE
+        WHEN julianday(o.order_delivered_customer_date) >
+             julianday(o.order_estimated_delivery_date)
+        THEN 'Late'
+        ELSE 'On-time'
+    END AS delivery_status,
+    ROUND(AVG(r.review_score), 2) AS avg_review_score,
+    COUNT(*) AS order_count
+FROM orders o
+JOIN reviews r
+ON o.order_id = r.order_id
+WHERE o.order_delivered_customer_date IS NOT NULL
+GROUP BY delivery_status;
+
+
+-- Query 22: Repeat Customer Rate
+-- Calculate the percentage of customers who placed more than one order.
+
+SELECT
+    ROUND(
+        COUNT(CASE WHEN order_count > 1 THEN 1 END) * 100.0 / COUNT(*),
+        2
+    ) AS repeat_customer_pct
+FROM (
+    SELECT
+        c.customer_unique_id,
+        COUNT(o.order_id) AS order_count
+    FROM customers c
+    JOIN orders o
+    ON c.customer_id = o.customer_id
+    GROUP BY c.customer_unique_id
+);
+
+
+-- Query 23: Month-over-Month Revenue Growth
+-- Compare monthly revenue with the previous month using a window function.
+
+SELECT
+    month,
+    revenue,
+    ROUND(
+        revenue - LAG(revenue) OVER (ORDER BY month),
+        2
+    ) AS mom_change
+FROM (
+    SELECT
+        strftime('%Y-%m', o.order_purchase_timestamp) AS month,
+        ROUND(SUM(p.payment_value), 2) AS revenue
+    FROM orders o
+    JOIN payments p
+    ON o.order_id = p.order_id
+    GROUP BY month
+) monthly_revenue
+ORDER BY month;
