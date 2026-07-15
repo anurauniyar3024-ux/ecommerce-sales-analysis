@@ -22,3 +22,4 @@ Thumbs.db
 
 # Environment Files
 .env
+database/*.db

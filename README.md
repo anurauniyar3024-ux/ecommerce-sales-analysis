@@ -1,63 +1,52 @@
-# 📊 E-commerce Sales Analysis
+# 🛒 E-Commerce Sales Analysis
 
-## 📌 Project Overview
+## Project Overview
 
-This project analyzes the Brazilian Olist E-commerce dataset to uncover meaningful business insights using Python, SQL, and data visualization techniques.
+This project analyzes the Brazilian Olist E-commerce dataset using Python.
 
-The objective is to perform end-to-end data analysis, starting from raw data exploration and preprocessing to business intelligence reporting and dashboard creation.
-
----
-
-## 🎯 Objectives
-
-- Understand customer purchasing behavior
-- Analyze sales performance
-- Identify top-performing products and sellers
-- Evaluate payment trends
-- Study customer reviews and satisfaction
-- Generate business recommendations through data-driven analysis
-
----
-
-## 🛠️ Tech Stack
+## Technologies Used
 
 - Python
 - Pandas
 - NumPy
-- SQL
 - Matplotlib
 - Seaborn
-- Power BI
+- Jupyter Notebook
 
----
+## Project Workflow
 
-## 📂 Dataset
+- Data Loading
+- Data Cleaning
+- Data Merging
+- Exploratory Data Analysis (EDA)
+- Business Insights
+- Data Visualization
 
-**Dataset:** Brazilian E-commerce Public Dataset by Olist (Kaggle)
+## Key Insights
 
-The raw dataset is not included in this repository.
+- Total Revenue
+- Total Orders
+- Customer Analysis
+- Monthly Sales Trend
+- Top Product Categories
+- Payment Method Analysis
+- Customer Review Analysis
+- Average Delivery Time
 
-Download it from:
-https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+## Folder Structure
 
----
+```
+data/
+├── raw/
+├── cleaned/
 
-## 📅 Project Progress
+notebooks/
+reports/
+visuals/
+README.md
+requirements.txt
+```
 
-- ✅ Day 1 – Project Setup & Data Understanding
-- ⏳ Day 2 – Data Cleaning & Preprocessing
-- ⏳ Day 3 – SQL Analysis
-- ⏳ Day 4 – Exploratory Data Analysis (EDA)
-- ⏳ Day 5 – Business Insights
-- ⏳ Day 6 – Dashboard Development
-- ⏳ Day 7 – Final Documentation
-
----
-
-## 👩‍💻 Author
+## Author
 
 Anushka Rauniyar
-
-B.Tech Information Technology
-
-Manipal University Jaipur
